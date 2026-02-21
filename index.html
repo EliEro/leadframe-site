@@ -85,6 +85,17 @@
         </div>
     </nav>
 
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden flex-col items-center justify-center space-y-8 text-lg font-medium">
+
+  <a href="#how-it-works" class="mobile-link">How It Works</a>
+  <a href="#features" class="mobile-link">What you get</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+
+  <button id="close-menu" class="mt-8 text-sm text-gray-500">Close</button>
+</div>
+
     <!-- Hero Section -->
     <section class="pt-40 pb-20 md:pt-48 md:pb-32 px-6">
         <div class="max-w-4xl mx-auto text-center animate-on-scroll">
@@ -497,6 +508,28 @@ form.addEventListener("submit", async function(e) {
     status.textContent = "Network error. Please try again.";
     status.className = "text-red-600 text-center";
   }
+});
+</script>
+<script>
+const menuButton = document.querySelector("nav button");
+const mobileMenu = document.getElementById("mobile-menu");
+const closeMenu = document.getElementById("close-menu");
+
+menuButton.addEventListener("click", () => {
+  mobileMenu.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+});
+
+closeMenu.addEventListener("click", () => {
+  mobileMenu.classList.add("hidden");
+  document.body.style.overflow = "auto";
+});
+
+document.querySelectorAll(".mobile-link").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.add("hidden");
+    document.body.style.overflow = "auto";
+  });
 });
 </script>
 </body>
